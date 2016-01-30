@@ -14,15 +14,27 @@ import java.util.Map;
 import java.util.Scanner;
 /**
  *
- * @author Dell
+ * @author Alex
  */
-public class ocr {
+public class OCR {
     
     public static void main(String[] args) throws FileNotFoundException {
-        // TODO code application logic here
         
-        String trainingListFileName = args[0];
-        String testListFileName = args[1];
+        String trainingListFileName = "training.txt";
+        String testListFileName = "testing.txt";
+        
+        try {
+            trainingListFileName = args[0];
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("No training file supplied, using default training set...");
+        }
+        
+        try {
+            testListFileName = args[1];
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("No testing file supplied, using default testing set...");
+        }
+        
       
         File trainingFile = new File(trainingListFileName);
         File testFile = new File(testListFileName);
@@ -44,20 +56,11 @@ public class ocr {
             }
         }   
         
-        NearestNeighbour knn = new NearestNeighbour(characterList, testList, 1);
-                
-        //nn.calcDistances();
-       // nn.orderList();
-        
-       // System.out.println(nn.getKList());
-       // nn.printCharacterList();
-        
-        //System.out.println(nn.getKList());
-        //System.out.println(nn.getResultList());
-        
-      
-       
-
-    }
-    
+        KMeans km = new KMeans(characterList, testList);
+        System.out.println("-------------------------------------------");
+        for (int i = 1; i <= 10; i++) {
+            KNearestNeighbour knn = new KNearestNeighbour(characterList, testList, i, true);
+            System.out.println("-------------------------------------------");
+        }        
+    }   
 }
