@@ -9,13 +9,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 /**
  *
  * @author Alex
  */
-public class NearestNeighbour {
+public class KNearestNeighbour {
 
     private List<Character> characterList;
     private List<Character> testList;
@@ -24,7 +23,7 @@ public class NearestNeighbour {
     //private Character testCharacter;
     
     
-    NearestNeighbour(List<Character> trainingList, Character testCharacter, int k) {
+    KNearestNeighbour(List<Character> trainingList, Character testCharacter, int k) {
         this.characterList = trainingList;
         this.k = k;
         //this.testCharacter = testCharacter;       
@@ -32,13 +31,15 @@ public class NearestNeighbour {
     }
     
     
-    NearestNeighbour(List<Character> trainingList, List<Character> testList, int k) {
+    KNearestNeighbour(List<Character> trainingList, List<Character> testList, int k, boolean print) {
         this.characterList = trainingList;
         this.k = k;
         this.testList = testList;       
         this.nameList = this._getNameList();
         
-        System.out.println("Running K-Nearest Neighbours (K="+k+")...");
+        if(print){
+            System.out.println("Running K-Nearest Neighbours (K="+k+")...");
+        }
         
         double testListSize = testList.size();
         double counter = 0;
@@ -57,6 +58,14 @@ public class NearestNeighbour {
         double correctlyClassified = (counter/testListSize)*100;
         System.out.println(correctlyClassified);
         
+    }
+    
+    KNearestNeighbour(List<Character> trainingList, List<Character> testList) {
+        this.characterList = trainingList;
+        this.k = k;
+        this.testList = testList;       
+        this.nameList = this._getNameList();
+               
     }
     
       
@@ -182,7 +191,7 @@ public class NearestNeighbour {
         
     }
     
-    public List<Character> getListByChar(int name){
+    public List<Character> getListByChar(double name){
         
         List<Character> list = new ArrayList<>();
         for (Character character : characterList) {

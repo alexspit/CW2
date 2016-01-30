@@ -16,7 +16,6 @@ public class Character {
     private double name;
     private ArrayList<Double> values;
     private double distance;
-    private int count;
 
     public Character(double name, ArrayList<Double> values) {
         this.name = name;
@@ -27,8 +26,7 @@ public class Character {
     public Character(double name, int valueSize) {
         this.name = name;
         this.values = new ArrayList<>();
-        this.count = 0;
-        
+               
         for (int i = 0; i < valueSize; i++) {
             this.values.add(0.0);
         }
@@ -50,15 +48,7 @@ public class Character {
         this.values.remove(this.getSize()-1);
                                
     } 
-    
-    public void incrementCount(){
-        this.count++;
-    }
-    
-    public int getCount(){
-        return this.count;
-    }
-    
+     
     public double getName() {
         return name;
     }
@@ -97,7 +87,7 @@ public class Character {
 
     @Override
     public String toString() {
-        return this.name+": "+this.values+" Distance: "+this.getDistance()+"\n";
+        return (int) this.name+": "+this.values+" Distance: "+this.getDistance()+"\n";
     }
     
     
