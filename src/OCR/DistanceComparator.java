@@ -9,7 +9,7 @@ import java.util.Comparator;
 
 /**
  *
- * @author Dell
+ * @author Alex
  */
 public class DistanceComparator implements Comparator<Character>{
 

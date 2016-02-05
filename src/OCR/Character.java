@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Dell
+ * @author Alex
  */
 public class Character {
     

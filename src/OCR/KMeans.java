@@ -11,9 +11,9 @@ import java.util.List;
 
 /**
  *
- * @author Dell
+ * @author Alex
  */
-public class KMeans {
+public final class KMeans {
     
     private List<Character> meanList;
     private List<Character> trainingList;
@@ -24,7 +24,7 @@ public class KMeans {
         this.trainingList = trainingList;
         this.testingList = testingList;       
         this.knn = new KNearestNeighbour(trainingList, testingList);
-        this.meanList = new ArrayList<Character>();
+        this.meanList = new ArrayList<>();
         
         for (Double d : knn.getNameList()) {
             meanList.add(new Character(d, trainingList.get(0).getSize()));
@@ -34,8 +34,15 @@ public class KMeans {
         
         setMeans();
         
-        System.out.println("Running K-Means...");
-        KNearestNeighbour newKnn = new KNearestNeighbour(meanList, testingList, 1, false);
+        //System.out.println("Running K-Means...");
+        //KNearestNeighbour newKnn = new KNearestNeighbour(meanList, testingList, 1, false);
+        
+        
+    }
+    
+    public double run(){
+        KNearestNeighbour newKnn = new KNearestNeighbour(meanList, testingList);
+        return newKnn.run(1);
     }
     
     public void setMeans(){

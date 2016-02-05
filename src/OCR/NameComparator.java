@@ -8,7 +8,7 @@ package OCR;
 import java.util.Comparator;
 /**
  *
- * @author Dell
+ * @author Alex
  */
 public class NameComparator implements Comparator<Character>{
 
